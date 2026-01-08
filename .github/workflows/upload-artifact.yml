@@ -1,9 +1,12 @@
-name: Build and Upload Artifact
+name: Build, Upload Artifact, and Release
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -24,8 +27,20 @@ jobs:
       - name: Create JAR file
         run: jar cfe hello-world.jar HelloWorld -C src HelloWorld.class
 
-      - name: Upload JAR artifact
+      - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: hello-world-jar
           path: hello-world.jar
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          tag_name: latest
+          name: Latest Build
+          draft: false
+          prerelease: false
+          files: hello-world.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
