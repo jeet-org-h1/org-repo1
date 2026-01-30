@@ -24,8 +24,8 @@ def search():
 if __name__ == "__main__":
     app.run(debug=True)
   
-/*
-github="ghp_Rz8l2k3p5q0w1m4n7v9x2z8l2k3p5q0w1m4n"
-aws="AKIAIMW6Q4XRANDOMKEY"
-stripe="sk_live_51Gqj58Lp9q2m4n6v8x0z1k3p5q7w9m2n4"
-*/
+
+## github="ghp_Rz8l2k3p5q0w1m4n7v9x2z8l2k3p5q0w1m4n"
+## aws="AKIAIMW6Q4XRANDOMKEY"
+## stripe="sk_live_51Gqj58Lp9q2m4n6v8x0z1k3p5q7w9m2n4"
+
